@@ -12,15 +12,13 @@ public class TextFileAnalyzer {
     private final long charCount;
     private final Map<Character, Long> characterFrequency;
 
-    // Конструктор с частотой символов
     public AnalysisResult(long lineCount, long wordCount, long charCount, Map<Character, Long> characterFrequency) {
       this.lineCount = lineCount;
-      this.wordCount = wordCount; // ✅ Исправлено
-      this.charCount = charCount; // ✅ Исправлено
+      this.wordCount = wordCount;
+      this.charCount = charCount;
       this.characterFrequency = characterFrequency != null ? new HashMap<>(characterFrequency) : new HashMap<>();
     }
 
-    // Конструктор без частоты (для тестов)
     public AnalysisResult(long lineCount, long wordCount, long charCount) {
       this(lineCount, wordCount, charCount, new HashMap<>());
     }
@@ -41,7 +39,6 @@ public class TextFileAnalyzer {
     }
   }
 
-  // Метод анализа — ВНЕ класса AnalysisResult!
   public AnalysisResult analyzeFile(String path) throws IOException {
     long lineCount = 0;
     long wordCount = 0;
@@ -67,7 +64,6 @@ public class TextFileAnalyzer {
     return new AnalysisResult(lineCount, wordCount, charCount, charFrequency);
   }
 
-  // Метод сохранения — ВНЕ класса AnalysisResult!
   public void saveAnalysisResult(AnalysisResult result, String path) throws IOException {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
       writer.write(result.toString());

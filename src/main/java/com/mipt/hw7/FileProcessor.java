@@ -75,7 +75,7 @@ public class FileProcessor {
 
 
     Path output = Paths.get(outputPath);
-    Files.createDirectories(output.getParent()); // создаём родительскую папку
+    Files.createDirectories(output.getParent());
 
     try (FileChannel outputChannel = FileChannel.open(
       output,
